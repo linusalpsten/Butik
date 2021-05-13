@@ -1,0 +1,36 @@
+﻿@model Store.Models.ShoppingCartViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Namn</th>
+            <th scope="col">Beskrivning</th>
+            <th scope="col">Pris</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Description
+                </td>
+                <td>
+                    @item.Price kr
+                </td>
+                <td>
+                    <a class="btn btn-danger" role="button" href="/Home/RemoveFromCart?Id=@item.Id">Ta bort</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" role="button" href="/Home/Checkout">Checka ut</a>
